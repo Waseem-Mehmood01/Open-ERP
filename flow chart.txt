@@ -1,0 +1,12 @@
+sale -> account recievable
+purchase -> account payable
+
+balance sheet -> 
+
+sale -> cost of good sold (credit)38
+sale -> account recievable (debit)34
+
+purchase -> expense (credit)39
+purchase -> account payable (debit)40
+
+journal voucher [debit == credit] (must)
