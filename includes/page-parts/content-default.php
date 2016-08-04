@@ -5,8 +5,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-           Asia Traders Co Ltd.
-            <small>it all starts here</small>
+           <?php echo $_SESSION['company_name']; ?>
+            <small>
+				
+			</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -72,7 +74,7 @@
 						<span class="info-box-icon bg-blue"><i class="glyphicon glyphicon-stats"></i></span>
 						<div class="info-box-content">
 						  <span class="info-box-text">Profit & Loss</span>
-						  <span class="info-box-number">0.0 Rs</span>
+						  <span class="info-box-number"><?php echo calculatePLCurrentMonth(); ?> Rs</span>of the month (<?php echo date('M'); ?>)
 						</div><!-- /.info-box-content -->
 					
 					</div><!-- /.col -->

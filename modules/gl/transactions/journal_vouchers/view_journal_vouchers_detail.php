@@ -1,7 +1,4 @@
 <?php
-print_r($_GET);
-echo "<br/>";
-print_r($_POST);
 $voucher_desc = "";
 $voucher_ref = "";
 $voucher_date = "";
@@ -21,33 +18,36 @@ if($voucher_id > 0) {
 //Draft Journal Vouchers
 $tbl_draft = new HTML_Table('', 'table table-striped table-bordered');
 $tbl_draft->addRow();
-$tbl_draft->addCell('ID', '', 'header');
-$tbl_draft->addCell('Voucher Date', '', 'header');
+$tbl_draft->addCell('#', '', 'header');
+
 $tbl_draft->addCell('Account', '', 'header');
-$tbl_draft->addCell('Entry Description', '', 'header');
+
 $tbl_draft->addCell('Debit', '', 'header');
 $tbl_draft->addCell('Credit', '', 'header');
-$tbl_draft->addCell('Action', '', 'header');
+
 ?>
 
 <?php
-$sql = 'SELECT * FROM '.DB_PREFIX.$_SESSION['co_prefix'].'journal_voucher_details  WHERE voucher_detail_status="draft" && voucher_id='.$voucher_id.' ORDER by voucher_detail_id DESC';
+$i = 1;
+$sql = 'SELECT * FROM '.DB_PREFIX.$_SESSION['co_prefix'].'journal_voucher_details WHERE voucher_id='.$voucher_id;
 $draft_jv = DB::query($sql);
 foreach($draft_jv as $jv_detail) { 
 $tbl_draft->addRow();
-$tbl_draft->addCell($jv_detail['voucher_detail_id']);
-$tbl_draft->addCell($jv_detail['voucher_date']);
-
+$tbl_draft->addCell($i);
 $accounts_query = 'SELECT account_id, account_code, account_desc_short from '.DB_PREFIX.$_SESSION['co_prefix'].'coa WHERE account_id='.$jv_detail['account_id'];
 $accounts = DB::queryFirstRow($accounts_query);
 										
 $tbl_draft->addCell($accounts['account_code']  ."-". $accounts['account_desc_short']);
-$tbl_draft->addCell($jv_detail['entry_description']);
 $tbl_draft->addCell($jv_detail['debit_amount']);
 $tbl_draft->addCell($jv_detail['credit_amount']);
-$tbl_draft->addCell("<a href ='".SITE_ROOT."?route=modules/gl/transactions/journal_vouchers/edit_journal_voucher_detail&voucher_detail_id=".$jv_detail['voucher_detail_id']."'><button type='button' class='btn btn-primary btn-xs' name='edit' value='Edit'>Edit&nbsp;<i class='glyphicon glyphicon-edit'></i></button></a>&nbsp;&nbsp;<a href ='".SITE_ROOT."?route=modules/gl/transactions/journal_vouchers/edit_journal_voucher_detail&voucher_detail_id=".$jv_detail['voucher_detail_id']."'><button type='submit' name='delete' value='delete' class='btn btn-danger btn-xs'>Delete&nbsp;&nbsp;<i class='glyphicon glyphicon-trash'></i></button</a>");
+
+$i++;
 }
-			  
+$tbl_draft->addRow();
+$tbl_draft->addCell(" ",'','footer');
+$tbl_draft->addCell("Total",'','footer');
+$tbl_draft->addCell($voucher['debits_total'],'','footer');
+$tbl_draft->addCell($voucher['credits_total'],'','footer');		  
 
 ?>
 
@@ -76,14 +76,7 @@ $tbl_draft->addCell("<a href ='".SITE_ROOT."?route=modules/gl/transactions/journ
               </div>
             </div>
 <div class="box-body">
-          <div class="row info">
-            <div class="col-xs-12">
-              <h2 class="page-header">
-                <i class="fa fa-globe"></i> &nbsp;<?php echo $_SESSION['company_name']; ?>
-                <small class="pull-right"><?php echo getDateTime(0,"dLong"); ?></small>
-              </h2>
-            </div><!-- /.col -->
-          </div>
+     
           <!-- info row -->
           <div class="row ">
             <div class="col-sm-8  "> 
@@ -93,38 +86,19 @@ $tbl_draft->addCell("<a href ='".SITE_ROOT."?route=modules/gl/transactions/journ
             </div><!-- /.col -->
 			<div class="col-sm-4  ">
               <b>JV ID: </b> <?php echo $voucher_id; ?></b><br/>
-              <b>Voucher Ref#:</b> <?php echo $voucher_ref; ?><br/>
-              <b>Voucher Date:</b> <?php echo getDateTime($voucher_date,"dLong"); ?><br/>
+              <b>Voucher Date:</b> <?php echo getDateTime($voucher_date,"dtLong"); ?><br/>
               
             </div><!-- /.col -->
 			 
           </div><!-- /.row -->
           
           
-             </div><!-- /.box-body -->
-            <div class="box-footer">
-             <small> Explanation text for JV header</small>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box -->
-     	 </section><!-- /.content -->
- 
-          <section >
-          <!-- title row -->
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">View Voucher Details</h3>
-              <div class="box-tools pull-right">
-<a class="pull btn btn-success btn-sm" href="<?php echo SITE_ROOT."index.php?route=modules/gl/transactions/journal_vouchers/add_journal_voucher_detail&voucher_id=".$voucher_id ?>">
-			Add More Details &nbsp; <span class="fa fa-chevron-circle-right"></span> </a>
-                
-              </div>
-            </div>
 <div class="box-body">
         <?php  echo $tbl_draft->display(); ?>
-          
+       
 </div><!-- /.box-body -->
             <div class="box-footer">
-             <small> Explanation text for JV details</small>
+           <br/><br/> <a href="?route=modules/gl/transactions/journal_vouchers/edit_journal_voucher_detail&voucher_id=<?php echo $voucher_id; ?>" class="btn btn-lg btn-success pull-right"><span class="glyphicon glyphicon-pencil"></span>&nbsp;<b>Edit</b></a>  <br/><br/> 
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
      	 </section><!-- /.content -->      

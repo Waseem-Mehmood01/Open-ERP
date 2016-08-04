@@ -8,7 +8,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-      <a class="navbar-brand" href="<?php echo SITE_ROOT; ?>">Asia Traders</a>
+      <a class="navbar-brand" href="<?php echo SITE_ROOT; ?>"><i class="fa fa-home fa-2x" ></i></a>
     </div>
 
     <!--  Collect the nav links, forms, and other content for toggling -->

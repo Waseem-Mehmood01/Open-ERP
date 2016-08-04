@@ -224,5 +224,41 @@ FROM
 	} else {
 		return $totalStock;
 	}
+}
+function calculateAccountBalance($account_id){
+	$sql = "SELECT ca.`account_id`,DATE(j.`voucher_date`), ca.`account_desc_short`, SUM(jv.`debit_amount`) AS debit_amount, SUM(jv.`credit_amount`) AS credit_amount  
+FROM
+    sa_test_coa ca
+     JOIN sa_test_journal_voucher_details jv 
+        ON (jv.`account_id` = ca.`account_id`)
+     JOIN sa_test_journal_vouchers j
+	ON (jv.`voucher_id`=j.`voucher_id`)
+	AND j.`active`=1
+	AND ca.`account_id`=".$account_id."
+        GROUP BY ca.`account_code`";
+		$result = DB::queryFirstRow($sql);
+		if(count($result)>0){
+			$balance = $result['debit_amount']-$result['credit_amount'];
+		} else {
+			$balance = 0;
+		}
+		return $balance;
+}
+function calculatePLCurrentMonth(){
+	$sql = "SELECT ca.`account_id`,DATE(j.`voucher_date`), ca.`account_desc_short`, SUM(jv.`debit_amount`) AS debit_amount, SUM(jv.`credit_amount`) AS credit_amount  
+FROM
+    sa_test_journal_voucher_details jv
+     JOIN sa_test_coa ca
+        ON (jv.`account_id` = ca.`account_id`)
+     JOIN sa_test_journal_vouchers j
+	ON (jv.`voucher_id`=j.`voucher_id`)
+	WHERE DATE(j.`voucher_date`) BETWEEN STR_TO_DATE('".date('Y')."-".date('m')."-1', '%Y-%m-%d') AND STR_TO_DATE('".date('Y')."-".date('m')."-".date('t')."', '%Y-%m-%d') 
+	AND j.`active`=1
+        GROUP BY jv.`account_id`
+         ORDER BY jv.`account_id` ASC";
+		 $result = DB::queryFirstRow($sql);	
+			$balance = $result['debit_amount']-$result['credit_amount'];
+		return $balance;
+		 
 }	   
 ?>

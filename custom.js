@@ -43,7 +43,8 @@ $('.date-picker').datepicker({
     format: 'yyyy-mm-dd',
     autoclose: true
 }); 
-
+ $('.editable').editable();
+ 
 $("abbr.timeago").timeago();
  $(".select2").select2();
 });

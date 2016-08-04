@@ -1,5 +1,5 @@
 <?php
-$ref_no = substr(uniqid(),8,4);
+$ref_no = substr(uniqid(),8,10);
 $payment_received = 0;
 if (isset($_POST['save'])){
 	/****** INSERT SALE ***/
@@ -18,6 +18,17 @@ if (isset($_POST['save'])){
 										'created_on'			=> $now
 									));
 	$sale_id =DB::insertId();	
+	/** Create JV **/
+	$insert = DB::Insert(DB_PREFIX.$_SESSION['co_prefix'].'journal_vouchers', 
+								array(				
+										'voucher_ref_no'		=> $ref_no,
+										'voucher_date'			=> getDateTime($_POST['order_date'],"mySQL"),
+										'voucher description'	=> 'Sale entry',
+										'debits_total'			=> $_POST['subTotal'],
+										'credits_total'			=> '',
+										'created_on'			=> $now
+									));
+		$voucher_id =DB::insertId();
 	for($i=0, $iMaxSize=count($_POST['rows']); $i<$iMaxSize; $i++){
 		$insert = DB::Insert(DB_PREFIX.$_SESSION['co_prefix'].'sale_detail', 
 								array(			
@@ -29,32 +40,23 @@ if (isset($_POST['save'])){
 										'rate'				=> $_POST['rate'][$i],
 										'total_amount'		=> $_POST['total'][$i], 
 									));
-	}
+
 	/****** Create JV ***/
-/**** 
+
 		
-				$insert = DB::Insert(DB_PREFIX.$_SESSION['co_prefix'].'journal_vouchers', 
-								array(				
-										'voucher_ref_no'		=> $ref_no,
-										'voucher_date'			=> $now,
-										'voucher description'	=> 'Sale entry',
-										'debits_total'			=> $_POST['subTotal'],
-										'credits_total'			=> $_POST['subTotal'],
-										'created_on'			=> $now
-									));
-				$voucher_id =DB::insertId();						
+				$debitAccount = DB::queryFirstField("SELECT c.`account_id` FROM ".DB_PREFIX.$_SESSION['co_prefix']."coa c WHERE c.`account_desc_short` LIKE '".$_POST['customer'][$i]."'");					
 				$insert = DB::Insert(DB_PREFIX.$_SESSION['co_prefix'].'journal_voucher_details', 
 								array(			
 										'voucher_id'		=> $voucher_id,
 										'account_id'		=> $debitAccount,
-										'debit_amount'			=> $_POST['subTotal'],
+										'debit_amount'			=> $_POST['total'][$i],
 										'credit_amount'				=> '',
 										'entry_description'				=> 'Sale entry',
 										'created_on'			=> $now
 									));
-										***/
+										
 	
-		//update stock
+	}
 			
 		echo '<script>window.location.replace("'.SITE_ROOT.'?route=modules/sales/view_sale");</script>';	
 }
@@ -120,10 +122,11 @@ if (isset($_POST['save'])){
 					<thead>
 						<tr>
 							<th width="2%"><input id="check_all" class="formcontrol" type="checkbox"/></th>
-							<th><label>Debit Account</label></th>
+							<th><label>Debtor</label></th>
 							<th><label>Weight</label></th>
 							<th><label>Unit</label></th>
 							<th><label>Bags</label></th>
+							<th><label>Weight per Bag</label></th>
 							<th><label>Rate</label></th>
 							<th><label>Sub Total</label></th>
 						</tr>
@@ -146,11 +149,12 @@ FROM
 							</select>
 							</td>
 							<input type="hidden" name="rows[]"/>
-							<td><input class="form-control changesNo weight" name="weight[]" id="weight_1" type="text" placeholder="Weight" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>
+							<td><input class="form-control changesNo weight" name="weight[]" id="weight_1" type="text" placeholder="Weight"/></td>
 							<td><select class="form-control changesNo" name="unit[]" id="unit_1"><option value="KG">KG</option><option value="Maunds">Maunds</option></select></td>
-							<td><input class="form-control bags changesNo" name="bags[]" id="bags_1" type="number" placeholder="Quantity"  onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"/></td>
+							<td><input class="form-control bags changesNo" name="bags[]" id="bags_1" type="number" placeholder="Quantity"  style="width: 100px;"/></td>
+							<td><input class="form-control total_weight" name="total_weight[]" id="total_weight_1" type="text" placeholder="0.0" readonly="true" style="width: 100px;"/></td>
 							<td><input class="form-control changesNo" name="rate[]" id="rate_1" type="number" placeholder="Rate" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"/></td>
-							<td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"/></td>
+							<td><input type="text" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly="true"/></td>
                   
 						</tr>
 					</tbody>
@@ -158,7 +162,7 @@ FROM
       		</div>
       	</div>
 		<div class='col-xs-6 col-xs-offset-4 pull-left'>
-			<p><b>Total Weight:</b> <span id="MWeight" style="font-size: large;">0</span> Maunds : <span id="KGWeight" style="font-size: large;">0</span> KG <b>&nbsp;&nbsp;&nbsp;Total Bags: </b><span id="Bags" style="font-size: large;">0</span></p>
+			<p><b>Total Weight:</b> <span id="MWeight" style="font-size: large;">0</span> Maunds : <span id="KGWeight" style="font-size: large;">0</span> KG <b> = </b><span id="total_weight" style="font-size: large;">0</span> KG <b>&nbsp;&nbsp;&nbsp;Total Bags: </b><span id="Bags" style="font-size: large;">0</span></p>
 		</div>
       	<div class='row'>
       		<div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
@@ -167,6 +171,7 @@ FROM
       		</div>
 			
 			<div class='col-xs-8 col-sm-offset-10 col-md-offset-10 col-lg-offset-10 col-sm-2 col-md-2 col-lg-2'>
+			
 			<div class="form-group">
 						<label>Total Amount: &nbsp;</label>
 						<div class="input-group">
@@ -174,6 +179,7 @@ FROM
 							<input type="text" class="form-control" name="subTotal" id="subTotal" placeholder="Total Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"readonly="true">
 						</div>
 			</div>
+			<b> Avg Rate: </b><span id="avg_rate" style="font-size: large;">0.0</span>
 			<button type="submit" class="btn btn-success btn-lg pull-right" name="save" value="Save">Save &nbsp; <i class="glyphicon glyphicon-floppy-disk"></i></button>
 			</div>
 
@@ -201,11 +207,12 @@ $(".addmore").on('click',function(){
 	html += '<?php } ?>';
 	html += '</select></td>';
 	html += '<input type="hidden" name="rows[]"/>';
-	html += '<td><input class="form-control changesNo" name="weight[]" id="weight_'+i+'" type="text" placeholder="Weight"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>';
+	html += '<td><input class="form-control changesNo" name="weight[]" id="weight_'+i+'" type="text" placeholder="Weight" /></td>';
 	html += '<td><select class="form-control changesNo" name="unit[]" id="unit_'+i+'"><option value="KG">KG</option><option value="Maunds">Maunds</option></select></td>';
-	html += '<td><input class="form-control bags changesNo" name="bags[]" id="bags_'+i+'" type="number" placeholder="Quantity"  onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"/></td>';
-	html += '<td><input class="form-control changesNo" name="rate[]" id="rate_'+i+'" type="number" placeholder="Rate" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"/></td>';
-	html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
+	html += '<td><input class="form-control bags changesNo" name="bags[]" id="bags_'+i+'" type="number" placeholder="Quantity" style="width: 100px;" /></td>';
+	html += '<td><input class="form-control total_weight" name="total_weight[]" id="total_weight_'+i+'" type="text" placeholder="0.0" readonly="true" style="width: 100px;"/></td>';
+	html += '<td><input class="form-control changesNo" name="rate[]" id="rate_'+i+'" type="number" placeholder="Rate"></td>';
+	html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly="true"></td>';
 	html += '</tr>';
 	$('table').append(html);
 	$('#customer_id_'+i).select2();
@@ -227,6 +234,8 @@ $(".delete").on('click', function() {
 	calculateKGWeight();
 	calculateMWeight();
 	calculateBags();
+	calculateSTWeight();
+	calculateAvgRate();
 });
 
 //price change
@@ -234,23 +243,31 @@ $(document).on('change keyup blur','.changesNo',function(){
 	id_arr = $(this).attr('id');
 	id = id_arr.split("_");
 	weight = $('#weight_'+id[1]).val();
-	
 	rate = $('#rate_'+id[1]).val();
 	unit= $('#unit_'+id[1]+' option:selected').val();
+	bags = $('#bags_'+id[1]).val();
 	if(unit=='KG') {
+		BagWeight = parseFloat(weight) / parseFloat(bags); 
 		weight=weight/40;
 		$('#weight_'+id[1]).addClass('KGWeight');
-		$('#weight_'+id[1]).removeClass('MWeight');
+		$('#weight_'+id[1]).removeClass('MWeight');	
 	} else {
 		$('#weight_'+id[1]).addClass('MWeight');
 		$('#weight_'+id[1]).removeClass('KGWeight');
+		BagWeight = parseFloat(weight)*40 / parseFloat(bags); 
 	}
 	sub_total = parseFloat(weight)*parseFloat(rate);
-	if( weight!='' && rate !='' ) $('#total_'+id[1]).val( sub_total );	
+	sub_total = parseFloat(sub_total).toFixed(2);
+	if( weight!='' && rate !='' ) $('#total_'+id[1]).val( sub_total );
+	BagWeight = parseFloat(BagWeight).toFixed(2);
+	if(weight!='' && bags!='') $('#total_weight_'+id[1]).val( BagWeight+' KG' );
 	calculateTotal();
 	calculateKGWeight();
 	calculateMWeight();
 	calculateBags();
+	calculateSTWeight();
+	calculateAvgRate();
+
 });
 //total price calculation 
 function calculateTotal(){
@@ -281,6 +298,27 @@ function calculateBags(){
 		if($(this).val() != '' ) total += parseFloat( $(this).val() );
 	});
 	$('#Bags').html( total );
+}
+function calculateSTWeight(){
+	KGtotal = 0;
+	MTotal = 0;
+	total = 0;
+	$('.KGWeight').each(function(){
+		if($(this).val() != '' ) KGtotal += parseFloat( $(this).val() );
+	});
+	$('.MWeight').each(function(){
+		if($(this).val() != '' ) MTotal += parseFloat( $(this).val() );
+	});
+	MTotal = parseInt(MTotal)*40;
+	total = parseInt(KGtotal) + parseInt(MTotal);
+	$('#total_weight').html( total );
+}
+function calculateAvgRate(){
+	total=0;
+	w = $("#total_weight").html();
+	t = $("#subTotal").val();
+	avg = parseFloat(parseFloat(t) / parseFloat(w) * 40).toFixed(2);
+	$("#avg_rate").html(avg);
 }
 //It restrict the non-numbers
 var specialKeys = new Array();

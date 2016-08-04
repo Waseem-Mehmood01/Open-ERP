@@ -21,7 +21,7 @@ $tbl = new HTML_Table('', 'table table-hover table-striped table-bordered data-t
 $tbl->addTSection('thead');
 $tbl->addRow();
 $tbl->addCell('Purchase ID', '', 'header');
-$tbl->addCell('Customer', '', 'header');
+$tbl->addCell('Creditor', '', 'header');
 $tbl->addCell('Vehicle #', '', 'header');
 $tbl->addCell('Party Name', '', 'header');
 $tbl->addCell('Party Address', '', 'header');

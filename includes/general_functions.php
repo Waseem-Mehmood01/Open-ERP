@@ -3,13 +3,13 @@
 function getDateTime($time = 0, $form = "dtLong") {
 	Switch($form) {
 		case "dtVLong":
-		$strform = "D, jS F, Y g:i:s a (\G\M\T O)";
+		$strform = "D, jS F, Y g:i:s A (\G\M\T O)";
 		break;
 		case "dtLong":
-		$strform = "D, jS F, Y g:i a";
+		$strform = "D, jS F, Y g:i A";
 		break;
 		case "dtShort":
-		$strform = "jS M, Y g:i a";
+		$strform = "jS M, Y g:i A";
 		break;
 		case "dtMin":
 		$strform = "j-n-y G:i";
@@ -22,6 +22,8 @@ function getDateTime($time = 0, $form = "dtLong") {
 		break;
 		case "dMin":
 		$strform = "j-n-y";
+		case "dOnly":
+		$strform = "Y-n-j";
 		break;
 		case "tLong":
 		$strform = "G:i:s (\G\M\T O)";

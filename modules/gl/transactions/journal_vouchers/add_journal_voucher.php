@@ -20,7 +20,7 @@ if (isset($_POST['save'])){
 										'account_id'		=> $_POST['account_id'][$i],
 										'debit_amount'			=> $_POST['debit_amount'][$i],
 										'credit_amount'				=> $_POST['credit_amount'][$i],
-										'entry_description'				=> $_POST['entry_description'][$i],
+									
 										'created_on'			=> $now
 									));
 								
@@ -90,7 +90,7 @@ echo '<script>alert("Saved successfuly");</script>';
 							<th><label>Account</label></th>
 							<th><label>Debits</label></th>
 							<th><label>Credits</label></th>
-							<th><label>Description</label></th>
+							
 							
 						</tr>
 					</thead>
@@ -110,7 +110,7 @@ echo '<script>alert("Saved successfuly");</script>';
 							<input type="hidden" name="rows[]"/>
 							<td><input class="form-control debits changesNo" name="debit_amount[]" id="debit_amount_1" type="text" placeholder="Amount"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>
 							<td><input class="form-control credits changesNo" name="credit_amount[]" id="credit_amount_1" type="text" placeholder="Amount"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>
-							<td><input class="form-control" name="entry_description[]" id="entry_description_1" type="text" placeholder="" autocomplete="off" /></td>
+							
 						</tr>
 						<tr>
 							<td><input class="case" type="checkbox"/></td>
@@ -127,7 +127,7 @@ echo '<script>alert("Saved successfuly");</script>';
 							<input type="hidden" name="rows[]"/>
 							<td><input class="form-control debits changesNo" name="debit_amount[]" id="debit_amount_2" type="text" placeholder="Amount"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>
 							<td><input class="form-control credits changesNo" name="credit_amount[]" id="credit_amount_2" type="text" placeholder="Amount"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>
-							<td><input class="form-control" name="entry_description[]" id="entry_description_2" type="text" placeholder="" autocomplete="off" /></td>
+							
 						</tr>
 					</tbody>
 				</table>
@@ -185,7 +185,7 @@ $(".addmore").on('click',function(){
 	html += '<input type="hidden" name="rows[]"/>';
 	html += '<td><input class="form-control debits changesNo" name="debit_amount[]" id="debit_amount_'+i+'" type="text" placeholder="Amount"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>';
 	html += '<td><input class="form-control credits changesNo" name="credit_amount[]" id="credit_amount_'+i+'" type="text" placeholder="Amount"autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" /></td>';
-	html += '<td><input class="form-control" name="entry_description[]" id="entry_description_'+i+'" type="text" placeholder="" autocomplete="off" /></td>';
+
 	html += '</tr>';
 	$('table').append(html);
 	i++;

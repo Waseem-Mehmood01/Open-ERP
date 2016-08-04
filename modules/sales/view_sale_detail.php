@@ -74,9 +74,8 @@ if($sale_id > 0) {
 					<thead>
 						<tr>
 							
-							<th><label>Customer</label></th>
+							<th><label>Debtor</label></th>
 							<th><label>Weight</label></th>
-							
 							<th><label>Bags</label></th>
 							<th><label>Rate</label></th>
 							<th><label>Sub Total</label></th>

@@ -65,7 +65,7 @@ CREATE TABLE `sa_companies` (
 
 /*Data for the table `sa_companies` */
 
-insert  into `sa_companies`(`company_id`,`company_name`,`company_db_prefix`,`company_address_1`,`company_address_2`,`city`,`country`,`currency`,`phone_1`,`phone_2`,`email`,`website`,`industry`,`company_time_zone`,`coa_levels`,`coa_level_1_label`,`coa_level_1_length`,`coa_level_2_label`,`coa_level_2_length`,`coa)level_3_label`,`coa_level_3_length`,`coa_level_4_label`,`coa_level_4_length`,`coa_level_5_label`,`coa_level_5_length`,`coa_level_6_label`,`coa_level_6_length`,`coa_level_7_label`,`coa_level_7_length`,`coa_level_8_label`,`coa_level_8_length`,`coa_level_9_label`,`coa_level_9_length`,`company_logo_home`,`company_logo_head`,`company_logo_icon`,`super_admin_user`,`super_admin_password`,`last_modified_by`,`last_modified_on`,`created_by`,`created_on`,`company_status`) values (1,'Asia Traders','test_','Shekupura','Shekupura','Shekupura','Pakistan','PKR','123456','+92-321-5551086','waseem.mehmood01@gmail.com','http://asiatraders.webberbiz.com','Sales','GMT',5,'company',1,'Main',2,'control',2,'sub-control',4,'Activity',5,NULL,0,NULL,0,NULL,0,NULL,0,'http://www.sky-valley-web-design.ca/images/250x400.gif','http://www.sky-valley-web-design.ca/images/250x150.gif','http://www.sky-valley-web-design.ca/images/100x100.gif','admin','admin','admin','2016-05-28 00:41:07','system','2016-05-28 00:41:07','active');
+insert  into `sa_companies`(`company_id`,`company_name`,`company_db_prefix`,`company_address_1`,`company_address_2`,`city`,`country`,`currency`,`phone_1`,`phone_2`,`email`,`website`,`industry`,`company_time_zone`,`coa_levels`,`coa_level_1_label`,`coa_level_1_length`,`coa_level_2_label`,`coa_level_2_length`,`coa)level_3_label`,`coa_level_3_length`,`coa_level_4_label`,`coa_level_4_length`,`coa_level_5_label`,`coa_level_5_length`,`coa_level_6_label`,`coa_level_6_length`,`coa_level_7_label`,`coa_level_7_length`,`coa_level_8_label`,`coa_level_8_length`,`coa_level_9_label`,`coa_level_9_length`,`company_logo_home`,`company_logo_head`,`company_logo_icon`,`super_admin_user`,`super_admin_password`,`last_modified_by`,`last_modified_on`,`created_by`,`created_on`,`company_status`) values (1,'Ø§ÛŒØ´ÛŒØ§Ø¡ Ù¹Ø±ÛŒÚˆØ±Ø²','test_','Ù¾Ø±Ø§Ù†ÛŒ ØºÙ„Ø§Ø¡ Ù…Ù†ÚˆÛŒ','Ø§ÙˆÚ©Ø§Ú‘Û','Ø§ÙˆÚ©Ø§Ú‘Û','Pakistan','PKR','123456','+92-321-5551086','waseem.mehmood01@gmail.com','http://asiatraders.move.pk','Sales','GMT',5,'company',1,'Main',2,'control',2,'sub-control',4,'Activity',5,NULL,0,NULL,0,NULL,0,NULL,0,'http://www.sky-valley-web-design.ca/images/250x400.gif','http://www.sky-valley-web-design.ca/images/250x150.gif','http://www.sky-valley-web-design.ca/images/100x100.gif','admin','admin','admin','2016-05-28 00:41:07','system','2016-05-28 00:41:07','active');
 
 /*Table structure for table `sa_sys_config` */
 
@@ -129,11 +129,11 @@ CREATE TABLE `sa_test_coa` (
   `created_on` timestamp NULL DEFAULT NULL,
   `account_status` varchar(255) DEFAULT 'active',
   PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_coa` */
 
-insert  into `sa_test_coa`(`account_id`,`account_code`,`account_group`,`account_desc_short`,`account_desc_long`,`activity_account`,`consolidate_only`,`has_parent`,`coa_level`,`has_children`,`parent_account_id`,`last_modified_by`,`last_modified_on`,`created_by`,`created_on`,`account_status`) values (33,'1001',10,'Cash','account balance',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(34,'1002',10,'Account recievable','Amount owned',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(35,'2001',11,'Cash payable','amount payable',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(36,'3001',12,'Munshi Capital','Munshi has amount',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(38,'2002',11,'Cost of good sold','cost of good sold',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(39,'2003',11,'Expense','Other expenses of purchase',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(40,'5001',14,'Account payable','Account payable',1,0,0,1,0,0,'test','2016-07-20 11:15:24','test','0000-00-00 00:00:00','Active'),(43,'4001',16,'Meer comission shop','Meer comission shop okara',1,0,0,1,0,0,'test','1970-01-01 05:00:00','test','0000-00-00 00:00:00','Active');
+insert  into `sa_test_coa`(`account_id`,`account_code`,`account_group`,`account_desc_short`,`account_desc_long`,`activity_account`,`consolidate_only`,`has_parent`,`coa_level`,`has_children`,`parent_account_id`,`last_modified_by`,`last_modified_on`,`created_by`,`created_on`,`account_status`) values (33,'1001',10,'Cash','account balance',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(34,'1002',10,'Account recievable','Amount owned',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(35,'2001',11,'Cash payable','amount payable',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(36,'3001',12,'Munshi Capital','Munshi has amount',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(38,'2002',11,'Cost of good sold','cost of good sold',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(39,'2003',11,'Expense','Other expenses of purchase',1,0,0,1,0,0,'test','1970-01-01 00:00:00','test','0000-00-00 00:00:00','Active'),(40,'5001',14,'Account payable','Account payable',1,0,0,1,0,0,'test','2016-07-20 11:15:24','test','0000-00-00 00:00:00','Active'),(43,'4001',16,'Meer comission shop','Meer comission shop okara',1,0,0,1,0,0,'test','1970-01-01 05:00:00','test','0000-00-00 00:00:00','Active'),(44,'4002',16,'Bilal Commission Merchant','Bilal Commission Merchant Multan',1,0,0,1,0,0,'test','1970-01-01 05:00:00','test','0000-00-00 00:00:00','Active');
 
 /*Table structure for table `sa_test_coa_groups` */
 
@@ -242,11 +242,11 @@ CREATE TABLE `sa_test_journal_voucher_details` (
   `last_modified_on` timestamp NULL DEFAULT NULL,
   `voucher_detail_status` varchar(255) DEFAULT 'draft',
   PRIMARY KEY (`voucher_detail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_journal_voucher_details` */
 
-insert  into `sa_test_journal_voucher_details`(`voucher_detail_id`,`voucher_id`,`voucher_date`,`account_id`,`entry_description`,`debit_amount`,`credit_amount`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`,`voucher_detail_status`) values (7,9,NULL,33,'',127800.00,0.00,NULL,'2016-07-12 14:01:26',NULL,NULL,'draft'),(8,9,NULL,34,'',0.00,127800.00,NULL,'2016-07-12 14:01:26',NULL,NULL,'draft'),(9,11,NULL,34,'Sale entry',35700.00,0.00,NULL,'2016-07-13 12:09:21',NULL,NULL,'draft'),(10,11,NULL,38,'Sale entry',0.00,35700.00,NULL,'2016-07-13 12:09:21',NULL,NULL,'draft'),(11,12,NULL,40,'Purchase entry',11760.00,0.00,NULL,'2016-07-13 12:16:42',NULL,NULL,'draft'),(12,12,NULL,39,'Purchase entry',0.00,11760.00,NULL,'2016-07-13 12:16:42',NULL,NULL,'draft'),(13,13,NULL,34,'Sale entry',21600.00,0.00,NULL,'2016-07-16 10:10:50',NULL,NULL,'draft'),(14,13,NULL,38,'Sale entry',0.00,21600.00,NULL,'2016-07-16 10:10:50',NULL,NULL,'draft'),(15,14,NULL,34,'Purchase entry',27600.00,0.00,NULL,'2016-07-19 08:27:16',NULL,NULL,'draft'),(16,14,NULL,38,'Purchase entry',0.00,27600.00,NULL,'2016-07-19 08:27:16',NULL,NULL,'draft'),(17,15,NULL,34,'Sale entry',36000.00,0.00,NULL,'2016-07-19 08:40:20',NULL,NULL,'draft'),(18,15,NULL,38,'Sale entry',0.00,36000.00,NULL,'2016-07-19 08:40:20',NULL,NULL,'draft');
+insert  into `sa_test_journal_voucher_details`(`voucher_detail_id`,`voucher_id`,`voucher_date`,`account_id`,`entry_description`,`debit_amount`,`credit_amount`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`,`voucher_detail_status`) values (21,18,NULL,43,'Purchase entry',0.00,193575.00,NULL,'2016-07-25 12:39:03',NULL,NULL,'draft'),(22,19,NULL,43,'Sale entry',84525.00,0.00,NULL,'2016-07-25 12:53:03',NULL,NULL,'draft'),(25,21,NULL,44,'Purchase entry',0.00,23490.00,NULL,'2016-07-26 09:23:28',NULL,NULL,'draft'),(26,22,NULL,44,'Sale entry',24010.00,0.00,NULL,'2016-07-26 09:30:16',NULL,NULL,'draft'),(27,23,NULL,43,'Sale entry',29400.00,0.00,NULL,'2016-07-26 09:42:51',NULL,NULL,'draft');
 
 /*Table structure for table `sa_test_journal_vouchers` */
 
@@ -257,8 +257,8 @@ CREATE TABLE `sa_test_journal_vouchers` (
   `voucher_ref_no` varchar(255) NOT NULL,
   `voucher_date` datetime DEFAULT NULL,
   `voucher description` varchar(255) DEFAULT NULL,
-  `debits_total` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `credits_total` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `debits_total` decimal(11,2) DEFAULT '0.00',
+  `credits_total` decimal(11,2) DEFAULT '0.00',
   `voucher_tags` varchar(255) DEFAULT NULL,
   `has_attachment` tinyint(1) DEFAULT '0',
   `attachment_url` varchar(255) DEFAULT NULL,
@@ -272,11 +272,11 @@ CREATE TABLE `sa_test_journal_vouchers` (
   `voucher_status` varchar(255) DEFAULT 'draft',
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`voucher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_journal_vouchers` */
 
-insert  into `sa_test_journal_vouchers`(`voucher_id`,`voucher_ref_no`,`voucher_date`,`voucher description`,`debits_total`,`credits_total`,`voucher_tags`,`has_attachment`,`attachment_url`,`voucher_approved_by`,`voucher_approved_on`,`voucher_approval_comments`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`,`voucher_status`,`active`) values (9,'a463','2016-07-07 00:00:00','',127800.00,127800.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-12 14:01:26',NULL,'2016-07-12 14:01:28','draft',1),(11,'6469','2016-07-13 12:09:21','Sale entry',35700.00,35700.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-13 12:09:21',NULL,'2016-07-13 12:09:23','draft',1),(12,'ce01','2016-07-13 12:16:42','Purchase entry',11760.00,11760.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-13 12:16:42',NULL,'2016-07-13 12:16:44','draft',1),(13,'e5c0','2016-07-16 10:10:50','Sale entry',21600.00,21600.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-16 10:10:50',NULL,'2016-07-16 10:10:53','draft',1),(14,'f1be','2016-07-19 08:27:16','Purchase entry',27600.00,27600.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-19 08:27:16',NULL,'2016-07-19 08:27:19','draft',1),(15,'94f0','2016-07-19 08:40:20','Sale entry',36000.00,36000.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-19 08:40:20',NULL,'2016-07-19 08:40:22','draft',1);
+insert  into `sa_test_journal_vouchers`(`voucher_id`,`voucher_ref_no`,`voucher_date`,`voucher description`,`debits_total`,`credits_total`,`voucher_tags`,`has_attachment`,`attachment_url`,`voucher_approved_by`,`voucher_approved_on`,`voucher_approval_comments`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`,`voucher_status`,`active`) values (18,'e06db','2016-07-25 12:39:03','Purchase entry',0.00,193575.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-25 12:39:03',NULL,'2016-07-25 12:39:06','draft',1),(19,'2849','2016-07-25 12:53:03','Sale entry',84525.00,0.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-25 12:53:03',NULL,'2016-07-25 12:53:06','draft',1),(21,'280e3','2016-07-26 09:23:28','Purchase entry',0.00,23490.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-26 09:23:28',NULL,'2016-07-26 09:23:30','draft',1),(22,'a8414','2016-07-26 09:30:16','Sale entry',24010.00,0.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-26 09:30:16',NULL,'2016-07-26 09:30:18','draft',1),(23,'60130','2016-07-26 09:42:51','Sale entry',29400.00,0.00,NULL,0,NULL,NULL,NULL,NULL,NULL,'2016-07-26 09:42:51',NULL,'2016-07-26 09:42:53','draft',1);
 
 /*Table structure for table `sa_test_module_category` */
 
@@ -312,11 +312,11 @@ CREATE TABLE `sa_test_purchase` (
   `created_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   KEY `purchase_id` (`purchase_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_purchase` */
 
-insert  into `sa_test_purchase`(`purchase_id`,`ref_no`,`vehicle_no`,`mill_name`,`order_date`,`mill_address`,`total_amount`,`payment_paid`,`is_return`,`is_approved`,`created_on`,`active`) values (1,'34IU3','LDB1289','Ghulam Rasool','2016-06-14','Faisalabad Pakistan ',24150,1,1,0,NULL,1),(4,'a87d','LEA1232','Mandi','2016-06-14','Multan road Lodhran',12600,1,0,0,'2016-07-20 16:45:34',1),(5,'ce01','MLM787','Local Markeet','2016-07-13','Lodhran village area',11760,1,0,0,NULL,1),(6,'f1be','LES8983','Local Markeet','2016-07-19','Lodhran village area',27600,1,0,1,'2016-07-19 08:27:16',1);
+insert  into `sa_test_purchase`(`purchase_id`,`ref_no`,`vehicle_no`,`mill_name`,`order_date`,`mill_address`,`total_amount`,`payment_paid`,`is_return`,`is_approved`,`created_on`,`active`) values (1,'34IU3','LDB1289','Ghulam Rasool','2016-06-14','Faisalabad Pakistan ',24150,1,1,0,NULL,1),(4,'a87d','LEA1232','Mandi','2016-06-14','Multan road Lodhran',12600,1,0,0,'2016-07-20 16:45:34',1),(5,'ce01','MLM787','Local Markeet','2016-07-13','Lodhran village area',11760,1,0,0,NULL,1),(6,'f1be','LES8983','Local Markeet','2016-07-19','Lodhran village area',27600,1,0,1,'2016-07-19 08:27:16',1),(7,'e06db','LES8983','lives co ltd','2016-07-25','Bwp road lodhran',193575,0,0,0,'2016-07-25 12:39:03',1),(9,'280e3','LDB8768','Local Markeet','2016-07-26','Multan road Okara',23490,0,0,0,'2016-07-26 09:23:28',1);
 
 /*Table structure for table `sa_test_purchase_detail` */
 
@@ -332,11 +332,11 @@ CREATE TABLE `sa_test_purchase_detail` (
   `rate` float NOT NULL,
   `total_amount` float DEFAULT NULL,
   PRIMARY KEY (`purchase_detail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_purchase_detail` */
 
-insert  into `sa_test_purchase_detail`(`purchase_detail_id`,`purchase_id`,`customer_name`,`weight`,`unit`,`bags`,`rate`,`total_amount`) values (1,1,'Ethehad',23,'Maunds',23,1050,24150),(4,5,'Khadim',12,'Maunds',110,980,11760),(5,6,'Bilal',23,'Maunds',20,1200,27600),(6,4,'Munshi Capital',12,'Maunds',120,1050,12600);
+insert  into `sa_test_purchase_detail`(`purchase_detail_id`,`purchase_id`,`customer_name`,`weight`,`unit`,`bags`,`rate`,`total_amount`) values (1,1,'Ethehad',23,'Maunds',23,1050,24150),(4,5,'Khadim',12,'Maunds',110,980,11760),(5,6,'Bilal',23,'Maunds',20,1200,27600),(6,4,'Munshi Capital',12,'Maunds',120,1050,12600),(7,7,'Meer comission shop',8900,'KG',78,870,193575),(10,9,'Bilal Commission Merchant',870,'KG',87,1080,23490);
 
 /*Table structure for table `sa_test_reporting_periods` */
 
@@ -378,11 +378,11 @@ CREATE TABLE `sa_test_sale` (
   `created_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`sale_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_sale` */
 
-insert  into `sa_test_sale`(`sale_id`,`ref_no`,`vehicle_no`,`mill_name`,`order_date`,`mill_address`,`total_amount`,`payment_received`,`is_return`,`is_approved`,`created_on`,`active`) values (5,'e318','LDB8768','Itefaq','2016-06-20','Multan road Lodhran',84650,1,0,0,NULL,1),(8,'6469','LDB897','Kissan mill','2016-07-13','Bwp road lodhran',35700,1,0,0,'2016-07-13 12:09:21',1),(9,'e5c0','LES8983','lives co ltd','2016-07-16','Bahawalpur pakistan',21600,1,0,0,'2016-07-16 10:10:50',1),(10,'94f0','LEA1232','Kissan mill','2016-07-13','Multan road Lodhran',36000,1,1,1,'2016-07-19 08:40:20',1),(12,'d705','LEA1232','Local Markeet','2016-07-20','Lodhran village area',264500,1,0,0,'2016-07-20 16:41:32',1);
+insert  into `sa_test_sale`(`sale_id`,`ref_no`,`vehicle_no`,`mill_name`,`order_date`,`mill_address`,`total_amount`,`payment_received`,`is_return`,`is_approved`,`created_on`,`active`) values (5,'e318','LDB8768','Itefaq','2016-06-20','Multan road Lodhran',84650,1,0,0,NULL,1),(8,'6469','LDB897','Kissan mill','2016-07-13','Bwp road lodhran',35700,1,0,1,'2016-07-13 12:09:21',1),(9,'e5c0','LES8983','lives co ltd','2016-07-16','Bahawalpur pakistan',21600,1,0,0,'2016-07-16 10:10:50',1),(10,'94f0','LEA1232','Kissan mill','2016-07-13','Multan road Lodhran',36000,1,1,1,'2016-07-19 08:40:20',1),(12,'d705','LEA1232','Local Markeet','2016-07-20','Lodhran village area',264500,1,0,0,'2016-07-20 16:41:32',1),(13,'2849','LES8983','Local Markeet','2016-07-25','Multan road Okara',84525,1,0,0,'2016-07-25 12:53:03',1),(14,'a8414','LDB897','Local Markeet','2016-07-07','Multan road Okara',24010,1,0,0,'2016-07-26 09:30:16',1),(15,'60130','MLM787','lives co ltd','2016-07-14','Multan road Okara',29400,1,0,0,'2016-07-26 09:42:51',1);
 
 /*Table structure for table `sa_test_sale_detail` */
 
@@ -398,11 +398,11 @@ CREATE TABLE `sa_test_sale_detail` (
   `rate` float NOT NULL,
   `total_amount` float DEFAULT NULL,
   PRIMARY KEY (`sale_detail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sa_test_sale_detail` */
 
-insert  into `sa_test_sale_detail`(`sale_detail_id`,`sale_id`,`customer_name`,`weight`,`unit`,`bags`,`rate`,`total_amount`) values (10,5,'Ethehad',34,'KG',45,1100,37400),(11,5,'Bilal',45,'KG',34,1050,47250),(15,8,'Kamran',34,'Maunds',34,1050,35700),(16,9,'Owner Lives',20,'Maunds',20,1080,21600),(17,10,'Kamran',30,'Maunds',20,1200,36000),(21,12,'Meer comission shop',230,'Maunds',20,1150,264500);
+insert  into `sa_test_sale_detail`(`sale_detail_id`,`sale_id`,`customer_name`,`weight`,`unit`,`bags`,`rate`,`total_amount`) values (10,5,'Ethehad',34,'KG',45,1100,37400),(11,5,'Bilal',45,'KG',34,1050,47250),(15,8,'Kamran',34,'Maunds',34,1050,35700),(16,9,'Owner Lives',20,'Maunds',20,1080,21600),(17,10,'Kamran',30,'Maunds',20,1200,36000),(21,12,'Meer comission shop',230,'Maunds',20,1150,264500),(24,13,'Meer comission shop',3450,'KG',340,980,3381000),(25,14,'Bilal Commission Merchant',980,'KG',98,980,24010),(26,15,'Meer comission shop',980,'KG',98,1200,29400);
 
 /*Table structure for table `sa_test_transactions` */
 
@@ -441,7 +441,7 @@ CREATE TABLE `sa_test_user_module_access` (
 
 /*Data for the table `sa_test_user_module_access` */
 
-insert  into `sa_test_user_module_access`(`user_id`,`module_id`) values (4,1),(4,2),(4,173),(4,174),(4,175),(4,176),(4,177),(4,178),(4,179),(4,180),(4,181),(4,182),(9,1),(9,174);
+insert  into `sa_test_user_module_access`(`user_id`,`module_id`) values (9,1),(9,174),(4,1),(4,2),(4,173),(4,174),(4,175),(4,176),(4,177),(4,178),(4,179),(4,180),(4,181),(4,182),(4,183);
 
 /*Table structure for table `sa_test_user_modules` */
 
@@ -454,11 +454,11 @@ CREATE TABLE `sa_test_user_modules` (
   `module_file` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `module_path` varchar(100) DEFAULT '',
   PRIMARY KEY (`module_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sa_test_user_modules` */
 
-insert  into `sa_test_user_modules`(`module_id`,`category_id`,`module_title`,`module_file`,`module_path`) values (1,1,'New Sale Order','new_sale','modules/sales/'),(2,1,'View All Sale Orders','view_sale','modules/sales/'),(173,1,'Sales Return','return_sale','modules/sales/'),(174,2,'New Purchase Order','new_purchase','modules/purchase/'),(175,2,'View All Purchase Orders','view_purchase','modules/purchase/'),(176,2,'Purchase Return','return_purchase','modules/purchase/'),(177,3,'Accounting Heads','list_coa_groups','modules/gl/setup/coa_groups/'),(178,3,'View Accounts','list_coa','modules/gl/setup/coa/'),(179,3,'Journal Entry','add_journal_voucher','modules/gl/transactions/journal_vouchers/'),(180,4,'Balance Sheet','balance_sheet','modules/reports/'),(181,4,'Profit and Loss','profit_loss','modules/reports/'),(182,4,'Trial Balance','trial_balance','modules/reports/');
+insert  into `sa_test_user_modules`(`module_id`,`category_id`,`module_title`,`module_file`,`module_path`) values (1,1,'New Sale Order','new_sale','modules/sales/'),(2,1,'View All Sale Orders','view_sale','modules/sales/'),(173,1,'Sales Return','return_sale','modules/sales/'),(174,2,'New Purchase Order','new_purchase','modules/purchase/'),(175,2,'View All Purchase Orders','view_purchase','modules/purchase/'),(176,2,'Purchase Return','return_purchase','modules/purchase/'),(177,3,'Accounting Heads','list_coa_groups','modules/gl/setup/coa_groups/'),(178,3,'View Accounts','list_coa','modules/gl/setup/coa/'),(179,3,'Journal Entry','add_journal_voucher','modules/gl/transactions/journal_vouchers/'),(180,4,'Balance Sheet','balance_sheet','modules/reports/'),(181,4,'Profit and Loss','profit_loss','modules/reports/'),(182,4,'Trial Balance','trial_balance','modules/reports/'),(183,4,'View Account Balance','view_account_balance','modules/reports/');
 
 /*Table structure for table `sa_test_users` */
 

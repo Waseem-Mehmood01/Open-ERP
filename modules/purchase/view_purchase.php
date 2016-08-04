@@ -31,6 +31,13 @@ if(isset($_GET['delete'])){
 		$purchase_id = $_GET['purchase_id'];
 		DB::query("DELETE FROM ".DB_PREFIX.$_SESSION['co_prefix']."purchase WHERE purchase_id='".$purchase_id."'");
 		DB::query("DELETE FROM ".DB_PREFIX.$_SESSION['co_prefix']."purchase_detail WHERE purchase_id='".$purchase_id."'");
+		//get ref_no
+		$ref_no = DB::queryFirstField("SELECT ref_no FROM ".DB_PREFIX.$_SESSION['co_prefix']."purchase WHERE purchase_id='".$purchase_id."'");
+		// get voucher id
+		$voucher_id = DB::queryFirstField("SELECT voucher_id FROM ".DB_PREFIX.$_SESSION['co_prefix']."journal_vouchers WHERE voucher_ref_no='".$ref_no."'");
+		//delete previous voucher
+		DB::query("DELETE FROM ".DB_PREFIX.$_SESSION['co_prefix']."journal_vouchers WHERE voucher_id='".$voucher_id."'");
+		DB::query("DELETE FROM ".DB_PREFIX.$_SESSION['co_prefix']."journal_voucher_details WHERE voucher_id='".$voucher_id."'");
 	}
 }
 ?>
@@ -43,7 +50,7 @@ $tbl = new HTML_Table('', 'table table-hover table-striped table-bordered data-t
 $tbl->addTSection('thead');
 $tbl->addRow();
 $tbl->addCell('Purchase ID', '', 'header');
-$tbl->addCell('Customer', '', 'header');
+$tbl->addCell('Creditor', '', 'header');
 $tbl->addCell('Vehicle #', '', 'header');
 $tbl->addCell('Party Name', '', 'header');
 $tbl->addCell('Party Address', '', 'header');
@@ -129,7 +136,7 @@ $tbl = new HTML_Table('', 'table table-hover table-striped table-bordered data-t
 $tbl->addTSection('thead');
 $tbl->addRow();
 $tbl->addCell('Purchase ID', '', 'header');
-$tbl->addCell('Customer', '', 'header');
+$tbl->addCell('Creditor', '', 'header');
 $tbl->addCell('Vehicle #', '', 'header');
 $tbl->addCell('Party Name', '', 'header');
 $tbl->addCell('Party Address', '', 'header');
